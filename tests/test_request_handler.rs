@@ -92,7 +92,11 @@ async fn test_bad_request_with_json_rpc_error() {
 
     assert!(response.is_err());
     match response {
-        Err(HeliusError::BadRequest { text, .. }) => assert_eq!(text, "code: -32603, message: \"internal error: please contact Helius support if this persists\""),
+        Err(HeliusError::BadRequest { text, .. }) =>
+            assert_eq!(
+                text,
+                "code: -32603, message: \"internal error: please contact Helius support if this persists\""
+            ),
         _ => panic!("Expected BadRequest error"),
     }
 
